@@ -4,7 +4,7 @@
   "description": "Terminal UI which can display data for users, admin and can be also used to trigger different functions and command. I plan to add real-time support for SignalR and Socket IO or API support for server calls",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/Lutonet/terminal/issues"
   },
-  "homepage": "https://github.com/Lutonet/terminal#readme"
+  "homepage": "https://github.com/Lutonet/terminal#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "jest-babel": "^1.0.1"
+  }
 }

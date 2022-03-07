@@ -1,5 +1,5 @@
 function getDefaultSettings() {
-  light = {
+  const light = {
     backgroundColor: "#CCCCCC",
     defaultColor: "#090909",
     errorColor: "#990000",
@@ -8,7 +8,7 @@ function getDefaultSettings() {
     invertedText: "#FFFFFF",
   };
 
-  dark = {
+  const dark = {
     backgroundColor: "#090909",
     defaultColor: "#CCCCCC",
     errorColor: "#990000",
@@ -17,7 +17,7 @@ function getDefaultSettings() {
     invertedText: "#FFFFFF",
   };
 
-  defaultSettings = {
+  const defaultSettings = {
     element: "#terminal",
     terminalType: "as-400",
     theme: "light",
@@ -38,3 +38,5 @@ function getDefaultSettings() {
   };
   return { defaultSettings, light, dark };
 }
+
+export default getDefaultSettings;
