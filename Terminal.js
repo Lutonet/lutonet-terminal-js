@@ -1,6 +1,7 @@
 class Terminal {
   constructor(props) {
-    console.log(props);
+    if (!props) {
+    }
   }
 }
 
