@@ -2,57 +2,57 @@
 
 ### Properties:
 
-**element** _string_ needs the HTML element Id or className or Tag i.e. `#terminal` or `.myterminal`. **default** `#terminal`
+`element` _string_ needs the HTML element Id or className or Tag i.e. `#terminal` or `.myterminal`. **default** `#terminal`
 
-**terminal-type** _string_ ['as-400', 'logger', 'terminal] **default** `as-400`
+`terminalType` _string_ ['as-400', 'logger', 'terminal] **default** `as-400`
 
-- **as-400** terminal is a read only, with command prompt located below the terminal similar to IBM AS-400 series
+- `as-400` terminal is a read only, with command prompt located below the terminal similar to IBM AS-400 series
 
-- **logger** terminal is fully read only - to display output for user or developer if used as a logger
+- `logger` terminal is fully read only - to display output for user or developer if used as a logger
 
-- **terminal** read/write terminal window should behave similar way to common terminal applications like windows cmd - can display different outputs to user and also read inputs from the user
+- `terminal` read/write terminal window should behave similar way to common terminal applications like windows cmd - can display different outputs to user and also read inputs from the user
 
-**theme** _string_ ['dark','light','custom] **default** `light`
+`theme` _string_ ['dark','light','custom] **default** `light`
 
 Selected theme sets up properties `{ background-color, text-color, dimmed-color, error-color, info-color, success-color, inverted-text }` to predefined values - if you want to use your own colors you can manually assign some of those properties.
 
 If you want to use all your own colours, select the 'custom' here
 
-**cursor** _string_ **default** `_` Decides which type of the cursor will be displayed - use any symbol you like where most common are `> $ and _`
+`cursor` _string_ **default** `_` Decides which type of the cursor will be displayed - use any symbol you like where most common are `> $ and _`
 
-**command-prefix** _string_ **default** `>` Decides which symbol will be displayed at the beginning of the command line (line where is the cursor placed)
+`commandPrefix` _string_ **default** `>` Decides which symbol will be displayed at the beginning of the command line (line where is the cursor placed)
 
-**cursor-show** _boolean_ **default for terminal and as-400** `true` **for logger** `false`
+`cursorShow` _boolean_ **default for terminal and as-400** `true` **for logger** `false`
 
 If set to false cursor will not be displayed. This is default settings
 
-**cursor-flashing** _string_ ['slow','fast','off']**default** `off`
+`cursorFlashing` _string_ ['slow','fast','off']**default** `off`
 
 Decides if cursor will be flashing slowly, fast or if it will be still on
 
-**display-logs** _boolean_ **default** `false`
+`displayLogs` _boolean_ **default** `false`
 
 Decides if the logger will listen to logs and display them
 
-**display-title** _boolean_ **default** `false`
+`displayTitle` _boolean_ **default** `false`
 
 Decides if terminal will display text with the type of message ie `Error` will be written at the start of the message
 
-**display-title-inverted** _boolean_ **default** `false`
+`titleInverted` _boolean_ **default** `false`
 
 Decides if the terminal will display Title word inverted (for example Error would be white font on red background - followed by normal colors for an error element)
 
-**title** _string_ **default** ''
+`title` _string_ **default** '' **default for error** 'Error:' **default for info** 'Information:' **default for success** 'Success: '
 
 **Theming properties**
 
-- **background-color** _string_ defines the terminal background color
-- **font-family** _string_ defines the terminal font family
-- **default-color** _string_ defines the terminal default font color
-- **error-color** _string_ defines the text color for error type of message
-- **info-color** _string_ defines the text color for information message
-- **success-color** _string_ defines the text color for the successful message
-- **inverted-text** _string_ defines the text color for inverted messages in logger
+- `backgroundColor` _string_ defines the terminal background color
+- `fontFamily` _string_ defines the terminal font family
+- `defaultColor` _string_ defines the terminal default font color
+- `errorColor` _string_ defines the text color for error type of message
+- `infoColor` _string_ defines the text color for information message
+- `successColor` _string_ defines the text color for the successful message
+- `invertedText` _string_ defines the text color for inverted messages in logger
 
 ---
 

@@ -1,5 +1,7 @@
 class Terminal {
-  constructor() {}
+  constructor(props) {
+    console.log(props);
+  }
 }
 
-module.exports = { Terminal };
+export default Terminal;
