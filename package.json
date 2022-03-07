@@ -1,0 +1,28 @@
+{
+  "name": "terminal-js",
+  "version": "0.0.8",
+  "description": "Terminal UI which can display data for users, admin and can be also used to trigger different functions and command. I plan to add real-time support for SignalR and Socket IO or API support for server calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lutonet/terminal.git"
+  },
+  "keywords": [
+    "javascript",
+    "ES6",
+    "terminal",
+    "div",
+    "textarea",
+    "commands",
+    "logger"
+  ],
+  "author": "Bohuslav Pařenica - Lutonet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lutonet/terminal/issues"
+  },
+  "homepage": "https://github.com/Lutonet/terminal#readme"
+}
