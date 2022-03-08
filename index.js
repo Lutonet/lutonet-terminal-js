@@ -1,13 +1,11 @@
 import Terminal from "./Terminal.js";
-setTimeout(() => {
-  const terminal = new Terminal({
-    theme: "dark",
-    element: "#terminal",
-  });
-  /*{
+const terminal = new Terminal({});
+terminal.theme = "dark";
+terminal.start();
+
+/*{
   display: true,
   displayTitle: false,
 });
 */
-  console.log(terminal);
-}, 50);
+console.log(terminal.theme);
