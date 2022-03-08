@@ -76,13 +76,9 @@ class Terminal {
     return this._theme;
   }
   set theme(value) {
-    console.log("setting theme : " + value);
     this._theme = value;
     for (let setting in this.settings[value]) {
       this[setting] = this.settings[value][setting];
-      console.log(
-        "Setting setting " + this[value] + "to" + this.settings[value][setting]
-      );
     }
 
     if (this.isLoaded) {
@@ -105,26 +101,6 @@ class Terminal {
   }
   set commandPrefix(value) {
     this._commandPrefix = value;
-    if (this.isLoaded) {
-      this.reload();
-    }
-  }
-
-  get cursorShow() {
-    return this._cursorShow;
-  }
-  set cursorShow(value) {
-    this._cursorShow = value;
-    if (this.isLoaded) {
-      this.reload();
-    }
-  }
-
-  get cursorFlashing() {
-    return this._cursorFlashing;
-  }
-  set cursorFlashing(value) {
-    this._cursorFlashin = value;
     if (this.isLoaded) {
       this.reload();
     }
@@ -234,26 +210,23 @@ class Terminal {
   start = () => {
     // check if element exists;
     this.isLoaded = true;
-    console.log(this.element);
     this.canvas = document.querySelector(this.element);
     this.canvas.classList.add("terminal-js");
-
     this.canvas.innerHTML = "";
     const terminalWindow = document.createElement("div");
     terminalWindow.classList.add("terminal-window");
-    console.log(this.backgroundColor);
     terminalWindow.style.backgroundColor = this.backgroundColor;
     terminalWindow.style.color = this.defaultColor;
     terminalWindow.style.display = "flex";
     terminalWindow.style.flexDirection = "column-reverse";
     terminalWindow.style.flex = 1;
-    terminalWindow.style.padding = "6px";
+    terminalWindow.margin = "0px";
+    terminalWindow.style.padding = "5px";
     terminalWindow.style.width = "600px";
     terminalWindow.style.fontSize = "15px";
-    terminalWindow.style.height = "450px";
+    terminalWindow.style.minHeight = "250px";
     this.canvas.appendChild(terminalWindow);
-    //terminalWindow.style.fontFamily = "Cascadia Code, Consolas";
-    terminalWindow.innerHTML = "Hello from the terminal<br>>";
+
     /**
      * If the element is AS 400 create two elements <div><div> second with 'terminal-input'
      * In case of terminal create single element with 'terminal-input' and 'terminal-window' classes
@@ -261,8 +234,20 @@ class Terminal {
      */
     if (this.terminalType !== "logger") {
       if (this.terminalType === "as-400") {
+        const terminalInput = document.createElement("input");
+        terminalInput.type = "text";
+        terminalInput.classList.add("terminal-input");
+        terminalInput.style.backgroundColor = this.backgroundColor;
+        terminalInput.style.color = this.defaultColor;
+        terminalInput.style.height = "20px";
+        terminalInput.style.outline = "0px";
+        terminalInput.style.margin = "0px";
+        terminalInput.style.borderWidth = "0px";
+        terminalInput.style.padding = "5px";
+        terminalInput.style.width = "600px";
+        terminalInput.style.fontSize = "15px";
+        this.canvas.appendChild(terminalInput);
       }
-
       this.reader = new InputReader(this.getInput, ".terminal-input");
     }
   };

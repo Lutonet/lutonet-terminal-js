@@ -4,13 +4,11 @@
 
 `element` _string_ needs the HTML element Id or className or Tag i.e. `#terminal` or `.myterminal`. **default** `#terminal`
 
-`terminalType` _string_ ['as-400', 'logger', 'terminal] **default** `as-400`
+`terminalType` _string_ ['as-400', 'logger'] **default** `as-400`
 
 - `as-400` terminal is a read only, with command prompt located below the terminal similar to IBM AS-400 series
 
 - `logger` terminal is fully read only - to display output for user or developer if used as a logger
-
-- `terminal` read/write terminal window should behave similar way to common terminal applications like windows cmd - can display different outputs to user and also read inputs from the user
 
 `theme` _string_ ['dark','light','custom] **default** `light`
 
@@ -21,14 +19,6 @@ If you want to use all your own colours, select the 'custom' here
 `cursor` _string_ **default** `_` Decides which type of the cursor will be displayed - use any symbol you like where most common are `> $ and _`
 
 `commandPrefix` _string_ **default** `>` Decides which symbol will be displayed at the beginning of the command line (line where is the cursor placed)
-
-`cursorShow` _boolean_ **default for terminal and as-400** `true` **for logger** `false`
-
-If set to false cursor will not be displayed. This is default settings
-
-`cursorFlashing` _string_ ['slow','fast','off']**default** `off`
-
-Decides if cursor will be flashing slowly, fast or if it will be still on
 
 `displayLogs` _boolean_ **default** `false`
 

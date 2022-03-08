@@ -1,5 +1,5 @@
 import Terminal from "./Terminal.js";
-const terminal = new Terminal();
+const terminal = new Terminal({ terminalType: "as-400" });
 terminal.start();
 terminal.theme = "dark";
 terminal.defaultColor = "green";
