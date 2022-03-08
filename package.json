@@ -24,11 +24,5 @@
   "bugs": {
     "url": "https://github.com/Lutonet/terminal/issues"
   },
-  "homepage": "https://github.com/Lutonet/terminal#readme",
-  "devDependencies": {
-    "jest": "^27.5.1"
-  },
-  "dependencies": {
-    "jest-babel": "^1.0.1"
-  }
+  "homepage": "https://github.com/Lutonet/terminal#readme"
 }

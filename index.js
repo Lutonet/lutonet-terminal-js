@@ -1,7 +1,7 @@
 import Terminal from "./Terminal.js";
 setTimeout(() => {
   const terminal = new Terminal({
-    display: true,
+    theme: "dark",
     element: "#terminal",
   });
   /*{
