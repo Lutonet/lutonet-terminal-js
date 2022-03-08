@@ -6,18 +6,19 @@ class Terminal {
   /***********          constructor         ***********/
   constructor(props) {
     // load all default settings
+    this.canvas = "";
     this.isLoaded = false;
-    const settings = defaultSettings();
-    for (let setting in settings.defaultSettings) {
-      this[setting] = settings.defaultSettings[setting];
+    this.settings = defaultSettings();
+    for (let setting in this.settings.defaultSettings) {
+      this[setting] = this.settings.defaultSettings[setting];
       console.log(
         "applying " +
           setting +
           " setting value: " +
-          settings.defaultSettings[setting]
+          this.settings.defaultSettings[setting]
       );
     }
-    this.element = settings.defaultSettings.element;
+    this.element = this.settings.defaultSettings.element;
 
     // if props were given to the consturctor apply them
     if (props) {
@@ -25,10 +26,10 @@ class Terminal {
         // first load the theme so user can rewrite settings later
         if (props.theme) console.log(props.theme);
         if (props.theme != "light") {
-          let tmp = settings[props.theme];
+          let tmp = this.settings[props.theme];
           for (let set in tmp) {
             console.log("applying " + set + " for theme");
-            this[set] = safeText(settings[props.theme][set]);
+            this[set] = safeText(this.settings[props.theme][set]);
           }
         }
         // remove cursor for logger
@@ -75,63 +76,169 @@ class Terminal {
     return this._theme;
   }
   set theme(value) {
+    console.log("setting theme : " + value);
     this._theme = value;
+    for (let setting in this.settings[value]) {
+      this[setting] = this.settings[value][setting];
+      console.log(
+        "Setting setting " + this[value] + "to" + this.settings[value][setting]
+      );
+    }
+
     if (this.isLoaded) {
       this.reload();
     }
   }
 
-  get cursor() {}
-  set cursor(value) {}
+  get cursor() {
+    return this._cursor;
+  }
+  set cursor(value) {
+    this._cursor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get commandPrefix() {}
-  set commandPrefix(value) {}
+  get commandPrefix() {
+    return this._commandPrefix;
+  }
+  set commandPrefix(value) {
+    this._commandPrefix = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get cursorShow() {}
-  set cursorShow(value) {}
+  get cursorShow() {
+    return this._cursorShow;
+  }
+  set cursorShow(value) {
+    this._cursorShow = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get cursorFlashing() {}
-  set cursorFlashing(value) {}
+  get cursorFlashing() {
+    return this._cursorFlashing;
+  }
+  set cursorFlashing(value) {
+    this._cursorFlashin = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get displayLogs() {}
-  set displayLogs(value) {}
+  get displayLogs() {
+    return this._displayLogs;
+  }
+  set displayLogs(value) {
+    this._displayLogs = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get displayTitle() {}
-  set displayTitle(value) {}
+  get displayTitle() {
+    return this._displayTitle;
+  }
+  set displayTitle(value) {
+    this._displayTitle = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get titleInverted() {}
-  set titleInverted(value) {}
+  get titleInverted() {
+    return this._titleInverted;
+  }
+  set titleInverted(value) {
+    this._titleInverted = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get title() {}
-  set title(value) {}
+  get title() {
+    return this._title;
+  }
+  set title(value) {
+    this._title = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get backgroundColor() {}
-  set backgroundColor(value) {}
+  get backgroundColor() {
+    return this._backgroundColor;
+  }
+  set backgroundColor(value) {
+    this._backgroundColor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get defaultColor() {}
-  set defaultColor(value) {}
+  get defaultColor() {
+    return this._defaultColor;
+  }
+  set defaultColor(value) {
+    this._defaultColor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get errorColor() {}
-  set errorColor(value) {}
+  get errorColor() {
+    return this._errorColor;
+  }
+  set errorColor(value) {
+    this._errorColor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get infoColor() {}
-  set infoColor(value) {}
+  get infoColor() {
+    return this._infoColor;
+  }
+  set infoColor(value) {
+    this._infoColor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get successColor() {}
-  set successColor(value) {}
+  get successColor() {
+    return this._successColor;
+  }
+  set successColor(value) {
+    this._successColor = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
-  get invertedText() {}
-  set invertedText(value) {}
+  get invertedText() {
+    return this._invertedText;
+  }
+  set invertedText(value) {
+    this._invertedText = value;
+    if (this.isLoaded) {
+      this.reload();
+    }
+  }
 
   // initialize our elements - in all cases initialize terminal-display element
   start = () => {
     // check if element exists;
     this.isLoaded = true;
     console.log(this.element);
-    const canvas = document.querySelector(this.element);
-    console.log(canvas);
+    this.canvas = document.querySelector(this.element);
+    this.canvas.classList.add("terminal-js");
 
-    canvas.innerHTML = "";
+    this.canvas.innerHTML = "";
     const terminalWindow = document.createElement("div");
     terminalWindow.classList.add("terminal-window");
     console.log(this.backgroundColor);
@@ -144,8 +251,8 @@ class Terminal {
     terminalWindow.style.width = "600px";
     terminalWindow.style.fontSize = "15px";
     terminalWindow.style.height = "450px";
-    canvas.appendChild(terminalWindow);
-    terminalWindow.style.fontFamily = "Cascadia Code, Consolas";
+    this.canvas.appendChild(terminalWindow);
+    //terminalWindow.style.fontFamily = "Cascadia Code, Consolas";
     terminalWindow.innerHTML = "Hello from the terminal<br>>";
     /**
      * If the element is AS 400 create two elements <div><div> second with 'terminal-input'
@@ -161,7 +268,7 @@ class Terminal {
   };
   // unload the element
   stop = () => {
-    this.console.innerHTML = "";
+    this.canvas.innerHTML = "";
     this.isLoaded = false;
   };
   // reload elements
