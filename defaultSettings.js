@@ -2,7 +2,8 @@ function getDefaultSettings() {
   const light = {
     backgroundColor: "#CCCCCC",
     defaultColor: "#090909",
-    errorColor: "#990000",
+    dimmedColor: "#555555",
+    errorColor: "#AA0000",
     infoColor: "#1133AA",
     successColor: "#119911",
     invertedText: "#FFFFFF",
@@ -11,8 +12,9 @@ function getDefaultSettings() {
   const dark = {
     backgroundColor: "#090909",
     defaultColor: "#CCCCCC",
-    errorColor: "#990000",
-    infoColor: "#1133AA",
+    dimmedColor: "#999999",
+    errorColor: "#BB1111",
+    infoColor: "#1133DD",
     successColor: "#119911",
     invertedText: "#FFFFFF",
   };

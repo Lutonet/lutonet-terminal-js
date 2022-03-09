@@ -8,7 +8,6 @@ class InputReader {
         /* define different actions for functional keys */
         if (e.key == "Enter") {
           executeInput(safeText(this.readerLine));
-          console.log("enter pressed");
           this.readerLine = "";
           cursorPosition = 0;
         } else {
@@ -91,11 +90,9 @@ class InputReader {
         }
       }
     };
-    console.log("starting reader");
     this.watch = watch;
     this.input = document.querySelector(".terminal-input");
     if (this.input) {
-      console.log("input found adding event listenner");
       this.input.addEventListener("keydown", logKey);
     } else {
       console.log("input not found to start the reader");

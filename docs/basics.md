@@ -32,13 +32,12 @@ Decides if terminal will display text with the type of message ie `Error` will b
 
 Decides if the terminal will display Title word inverted (for example Error would be white font on red background - followed by normal colors for an error element)
 
-`title` _string_ **default** '' **default for error** 'Error:' **default for info** 'Information:' **default for success** 'Success: '
-
 **Theming properties**
 
 - `backgroundColor` _string_ defines the terminal background color
 - `fontFamily` _string_ defines the terminal font family
 - `defaultColor` _string_ defines the terminal default font color
+- `dimmedColor` _string_ defines the terminal font color used for less important info
 - `errorColor` _string_ defines the text color for error type of message
 - `infoColor` _string_ defines the text color for information message
 - `successColor` _string_ defines the text color for the successful message
@@ -54,21 +53,15 @@ Decides if the terminal will display Title word inverted (for example Error woul
 
 `writeLine(string)` displays given string with the default font color. Cursor goes to the beginning of the next line
 
-`writeErrorLine(string)` like `writeLine(string)` styled as error - can diplay a `title` before message
+`writeError(string, title)` like `writeLine(string)` styled as error - can diplay a `title` before message
 
-`writeInfoLine(string)` like `writeLine(string)` styled as information - can diplay a `title` before message not
+`writeInfo(string, title)` like `writeLine(string)` styled as information - can diplay a `title` before message not
 
-`writeSuccessLine(string)` like `writeLine(string)` styled as success - can diplay a `title` before message
+`writeSuccess(string, title)` like `writeLine(string)` styled as success - can diplay a `title` before message
 
-`writeError(string)` like `write(string)` styled as error - can diplay a `title` before message
+`read(question)` returns char when user press any key on the command line. String with question will be displayed on the command line before the terminal symbol
 
-`writeInfo(string)` like `write(string)` styled as information - can diplay a `title` before message not
-
-`writeSuccess(string)` like `write(string)` styled as success - can diplay a `title` before message
-
-`read()` returns char when user press any key on the command line
-
-`readLine()` returns string when user hits enter with all he typed
+`readLine(question)` returns string when user hits enter with all he typed
 
 ## Logger methots
 
