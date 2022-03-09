@@ -60,7 +60,7 @@ Decides if the terminal will display Title word inverted (for example Error woul
 `writeSuccess(string, title)` like `writeLine(string)` styled as success - can diplay a `title` before message
 
 `read(question, keys)` _promise_ returns char when user presses any key on the command line. String with `question` will be displayed on the command line before the terminal symbol. Parameter `keys` can specify valid keys - other pressed keys will be ignored.
-example: ` terminal.read('Do you agree?',['y','n'])
+example: `terminal.read('Do you agree?',['y','n'])`
 
 `readLine(question)` _promise_ returns string when user hits enter with all he typed
 
