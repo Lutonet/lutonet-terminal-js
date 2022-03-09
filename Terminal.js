@@ -1,7 +1,8 @@
 import defaultSettings from "./defaultSettings.js";
 import safeText from "./functions/safeText.js";
 import InputReader from "./InputReader.js";
-import WindowOperator from "./functions/terminalFunctions.js";
+import WindowOperator from "./WindowOperator.js";
+import TerminalShell from "./TerminalShell.js";
 
 class Terminal {
   /***********          constructor         ***********/
@@ -15,6 +16,13 @@ class Terminal {
       this[setting] = this.settings.defaultSettings[setting];
     }
     this.element = this.settings.defaultSettings.element;
+
+    this.getInput = (input) => {
+      let reader = document.querySelector(".terminal-input");
+      reader.value = "";
+      reader.value = this.commandPrefix + " ";
+      this.shell.execute(input);
+    };
 
     // if props were given to the consturctor apply them
     if (props) {
@@ -223,7 +231,7 @@ class Terminal {
     terminalWindow.margin = "0px";
     terminalWindow.style.padding = "5px";
     terminalWindow.style.width = "600px";
-    terminalWindow.style.fontSize = "15px";
+    //terminalWindow.style.fontSize = "14px";
     terminalWindow.style.minHeight = "250px";
     this.canvas.appendChild(terminalWindow);
     this.windowElement = terminalWindow;
@@ -253,12 +261,15 @@ class Terminal {
         terminalInput.style.borderWidth = "0px";
         terminalInput.style.padding = "5px";
         terminalInput.style.width = "600px";
-        terminalInput.style.fontSize = "15px";
+        terminalInput.style.fontSize = "14px";
         terminalInput.value = this.commandPrefix + " ";
         terminalInput.autofocus = true;
         this.canvas.appendChild(terminalInput);
+        this.terminalInput = terminalInput;
       }
-      this.reader = new InputReader(this.getInput, ".terminal-input");
+      this.reader = new InputReader(this);
+      this.readLine = (question) => this.reader.readLine(question);
+      this.shell = new TerminalShell(this);
     }
   };
   // unload the element
@@ -270,13 +281,6 @@ class Terminal {
   reload = () => {
     this.stop();
     this.start();
-  };
-
-  getInput = (input) => {
-    let reader = document.querySelector(".terminal-input");
-    reader.value = "";
-    reader.value = this.commandPrefix + " ";
-    console.log("command received: " + input);
   };
 }
 

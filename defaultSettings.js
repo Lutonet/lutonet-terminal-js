@@ -5,7 +5,7 @@ function getDefaultSettings() {
     dimmedColor: "#555555",
     errorColor: "#AA0000",
     infoColor: "#1133AA",
-    successColor: "#119911",
+    successColor: "#11aa11",
     invertedText: "#FFFFFF",
   };
 

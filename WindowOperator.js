@@ -28,7 +28,7 @@ export default class WindowOperator {
     this.terminal.windowElement.appendChild(string);
   }
 
-  writeError(str) {
+  writeError(str, errorTitle) {
     if (this.terminal.displayTitle) {
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
@@ -41,7 +41,7 @@ export default class WindowOperator {
       }
       //      subtitle.style.padding = "2px";
       subtitle.classList.add("terminal-error-title");
-      let title = this.terminal.title ? this.terminal.title : "Error:";
+      let title = errorTitle ? errorTitle : "Error:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
       this.terminal.windowElement.appendChild(subtitle);
@@ -51,13 +51,12 @@ export default class WindowOperator {
     string.classList.add("terminal-default");
     string.style.color = this.terminal.errorColor;
     string.style.padding = "2px";
-    console.log(this.terminal.errorColor);
     string.innerHTML = str;
     this.terminal.windowElement.appendChild(string);
     this.terminal.windowElement.appendChild(document.createElement("br"));
   }
 
-  writeInfo(str) {
+  writeInfo(str, infoTitle) {
     if (this.terminal.displayTitle) {
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
@@ -70,7 +69,7 @@ export default class WindowOperator {
       }
       //      subtitle.style.padding = "2px";
       subtitle.classList.add("terminal-error-title");
-      let title = this.terminal.title ? this.terminal.title : "Information:";
+      let title = infoTitle ? infoTitle : "Information:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
       this.terminal.windowElement.appendChild(subtitle);
@@ -80,13 +79,12 @@ export default class WindowOperator {
     string.classList.add("terminal-default");
     string.style.color = this.terminal.infoColor;
     string.style.padding = "2px";
-    console.log(this.terminal.infoColor);
     string.innerHTML = str;
     this.terminal.windowElement.appendChild(string);
     this.terminal.windowElement.appendChild(document.createElement("br"));
   }
 
-  writeSuccess(str) {
+  writeSuccess(str, successTitle) {
     if (this.terminal.displayTitle) {
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
@@ -99,7 +97,7 @@ export default class WindowOperator {
       }
       //  subtitle.style.padding = "2px";
       subtitle.classList.add("terminal-error-title");
-      let title = this.terminal.title ? this.terminal.title : "Success:";
+      let title = successTitle ? successTitle : "Success:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
       this.terminal.windowElement.appendChild(subtitle);
@@ -109,7 +107,6 @@ export default class WindowOperator {
     string.classList.add("terminal-default");
     string.style.color = this.terminal.successColor;
     string.style.padding = "2px";
-    console.log(this.terminal.successColor);
     string.innerHTML = str;
     this.terminal.windowElement.appendChild(string);
     this.terminal.windowElement.appendChild(document.createElement("br"));
