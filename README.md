@@ -13,3 +13,5 @@ Terminal supports two different modes
 
 - **logger** is a read only terminal
 - **as-400** terminal is divided to bottom command line and the display above it.
+
+As an as-400 terminal it allows to read user input and get its value to use for triggering different functions
