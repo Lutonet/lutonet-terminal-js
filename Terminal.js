@@ -262,7 +262,8 @@ class Terminal {
     this.start();
   };
 
-  getInput = (input, length) => {
+  getInput = (input) => {
+    console.log("command received: " + input);
     /**
      *
      * Work with the user Input - we need to check if the type is AS 400 - then we delete all in element
