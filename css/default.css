@@ -3,12 +3,11 @@
 
 body {
   font-family: 'Share Tech Mono', monospace;
-  color: green;
-  font-weight: 500;
 }
 
 .terminal-js {
   font-family: 'Share Tech Mono', monospace;
+  width: '550';
 }
 
 

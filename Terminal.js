@@ -4,7 +4,7 @@ import InputReader from "./InputReader.js";
 import WindowOperator from "./WindowOperator.js";
 import TerminalShell from "./TerminalShell.js";
 
-class Terminal {
+export class Terminal {
   /***********          constructor         ***********/
   constructor(props) {
     // load all default settings
@@ -18,9 +18,8 @@ class Terminal {
     this.element = this.settings.defaultSettings.element;
 
     this.getInput = (input) => {
-      let reader = document.querySelector(".terminal-input");
-      reader.value = "";
-      reader.value = this.commandPrefix + " ";
+      this.prompt.value = this.commandPrefix;
+      this.terminalInput.value = "";
       this.shell.execute(input);
     };
 
@@ -37,7 +36,6 @@ class Terminal {
         for (let property in props) {
           if (this[property]) {
             this[property] = safeText(props[property]);
-            this.console.log("recording property " + property);
           }
         }
       } catch {}
@@ -219,25 +217,25 @@ class Terminal {
     this.isLoaded = true;
     this.canvas = document.querySelector(this.element);
     this.canvas.classList.add("terminal-js");
+    this.canvas.style.backgroundColor = this.backgroundColor;
     this.canvas.innerHTML = "";
     const terminalWindow = document.createElement("div");
     terminalWindow.classList.add("terminal-window");
     terminalWindow.style.backgroundColor = this.backgroundColor;
     terminalWindow.style.color = this.defaultColor;
-    //terminalWindow.style.display = "flex";
-    //terminalWindow.style.flexDirection = "column";
-
-    //terminalWindow.style.flex = 1;
     terminalWindow.margin = "0px";
     terminalWindow.style.padding = "5px";
-    terminalWindow.style.width = "600px";
-    //terminalWindow.style.fontSize = "14px";
+    terminalWindow.style.width = "100%";
+    terminalWindow.style.fontSize = "14px";
     terminalWindow.style.minHeight = "250px";
     this.canvas.appendChild(terminalWindow);
     this.windowElement = terminalWindow;
     // we got terminal running, now we need to attach the TerminalOperator to it
     const windowOperator = new WindowOperator(this);
-    this.clear = () => windowOperator.clear();
+    this.clear = () => {
+      windowOperator.clear();
+      this.prompt.innerHTML = this.commandPrefix;
+    };
     this.write = (string) => windowOperator.write(string);
     this.writeLine = (string) => windowOperator.writeLine(string);
     this.writeError = (string) => windowOperator.writeError(string);
@@ -250,26 +248,45 @@ class Terminal {
      */
     if (this.terminalType !== "logger") {
       if (this.terminalType === "as-400") {
+        this.inputSpan = document.createElement("span");
+        this.inputSpan.style.margin = "0px";
+        this.inputSpan.style.marginRight = "-10px";
+        this.inputSpan.style.display = "flex";
+        this.inputSpan.style.backgroundColor = this.backgroundColor;
+        this.prompt = document.createElement("span");
+        this.prompt.style.height = "20px";
+        this.prompt.style.alignContent = "stretch";
+        this.prompt.style.marginTop = "0px";
+        this.prompt.style.marginBottom = "0px";
+        this.prompt.style.marginRight = "6px";
+        this.prompt.style.padding = "5px";
+        this.prompt.style.color = this.successColor;
+        this.prompt.style.fontSize = "14px";
+        this.prompt.innerHTML = this.commandPrefix;
+        this.inputSpan.appendChild(this.prompt);
+
         const terminalInput = document.createElement("input");
         terminalInput.type = "text";
         terminalInput.classList.add("terminal-input");
         terminalInput.style.backgroundColor = this.backgroundColor;
         terminalInput.style.color = this.defaultColor;
         terminalInput.style.height = "20px";
+        terminalInput.style.flex = 1;
         terminalInput.style.outline = "0px";
         terminalInput.style.margin = "0px";
         terminalInput.style.borderWidth = "0px";
         terminalInput.style.padding = "5px";
-        terminalInput.style.width = "600px";
         terminalInput.style.fontSize = "14px";
-        terminalInput.value = this.commandPrefix + " ";
+        terminalInput.value = "";
         terminalInput.autofocus = true;
-        this.canvas.appendChild(terminalInput);
+        this.inputSpan.appendChild(terminalInput);
+        this.canvas.appendChild(this.inputSpan);
         this.terminalInput = terminalInput;
+        this.reader = new InputReader(this);
+        this.readLine = (question) => this.reader.readLine(question);
+        this.readKey = (question, map) => this.reader.read(question, map);
+        this.shell = new TerminalShell(this);
       }
-      this.reader = new InputReader(this);
-      this.readLine = (question) => this.reader.readLine(question);
-      this.shell = new TerminalShell(this);
     }
   };
   // unload the element

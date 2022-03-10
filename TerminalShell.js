@@ -5,7 +5,6 @@ export default class TerminalShell {
       console.log("no terminal element was received in the constructor");
       return;
     }
-    terminal.writeLine("");
   }
 
   execute(command) {
