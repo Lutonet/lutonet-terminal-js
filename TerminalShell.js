@@ -23,6 +23,15 @@ export default class TerminalShell {
         this.terminal.clear();
         break;
 
+      case "help":
+        if (data.length > 1)
+          switch (data[1].toLowerCase()) {
+            case "--ver":
+            case "version":
+          }
+        this.terminal.writeLine("Help: ");
+        this.terminal.writeLine("");
+
       case "switchtheme":
         if (data.length === 1) {
           console.log(this.terminal.theme);

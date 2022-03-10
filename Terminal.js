@@ -272,10 +272,11 @@ export class Terminal {
         terminalInput.style.color = this.defaultColor;
         terminalInput.style.height = "20px";
         terminalInput.style.flex = 1;
+
         terminalInput.style.outline = "0px";
         terminalInput.style.margin = "0px";
         terminalInput.style.borderWidth = "0px";
-        terminalInput.style.padding = "5px";
+        terminalInput.style.padding = "2px";
         terminalInput.style.fontSize = "14px";
         terminalInput.value = "";
         terminalInput.autofocus = true;
