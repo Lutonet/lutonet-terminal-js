@@ -31,6 +31,7 @@ export default class TerminalShell {
           }
         this.terminal.writeLine("Help: ");
         this.terminal.writeLine("");
+        break;
 
       case "switchtheme":
         if (data.length === 1) {

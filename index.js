@@ -3,6 +3,8 @@ const terminal = new Terminal({ terminalType: "as-400" });
 terminal.theme = "dark";
 terminal.start();
 terminal.displayTitle = true;
+terminal.writeLine(new Date());
+
 terminal.readLine("Enter testing data").then((data) => {
   terminal.writeSuccess(data);
   terminal.readKey("Press any key").then((data) => {

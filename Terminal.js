@@ -221,6 +221,7 @@ export class Terminal {
     this.canvas.innerHTML = "";
     const terminalWindow = document.createElement("div");
     terminalWindow.classList.add("terminal-window");
+    terminalWindow.style.overflow = "hide";
     terminalWindow.style.backgroundColor = this.backgroundColor;
     terminalWindow.style.color = this.defaultColor;
     terminalWindow.margin = "0px";
@@ -234,7 +235,8 @@ export class Terminal {
     const windowOperator = new WindowOperator(this);
     this.clear = () => {
       windowOperator.clear();
-      this.prompt.innerHTML = this.commandPrefix;
+      if (this.terminalType == "as-400")
+        this.prompt.innerHTML = this.commandPrefix;
     };
     this.write = (string) => windowOperator.write(string);
     this.writeLine = (string) => windowOperator.writeLine(string);

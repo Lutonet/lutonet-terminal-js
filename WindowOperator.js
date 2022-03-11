@@ -5,11 +5,11 @@ export default class WindowOperator {
       console.log("no window element to display at");
       return;
     }
-    this.terminalWindow = terminal.windowElement;
+    this.screen = terminal.windowElement;
   }
   // here we define basic terminal services
   clear() {
-    this.terminal.windowElement.innerHTML = "";
+    this.screen.innerHTML = "";
   }
   write(str) {
     const string = document.createElement("span");
@@ -17,7 +17,7 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.style.color = terminal.defaultColor;
     string.innerHTML = str;
-    this.terminal.windowElement.appendChild(string);
+    this.screen.prepend(string);
   }
   writeLine(str) {
     const string = document.createElement("div");
@@ -25,11 +25,17 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.style.color = terminal.defaultColor;
     string.innerHTML = str;
-    this.terminal.windowElement.appendChild(string);
+    this.screen.prepend(string);
   }
 
   writeError(str, errorTitle) {
+    let messageSpan;
+    messageSpan = document.createElement("div");
     if (this.terminal.displayTitle) {
+      messageSpan.style.width = "100%";
+      messageSpan.style.margin = "0px";
+      messageSpan.style.padding = "0px";
+
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
         subtitle.style.backgroundColor = this.terminal.errorColor;
@@ -44,20 +50,26 @@ export default class WindowOperator {
       let title = errorTitle ? errorTitle : "Error:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
-      this.terminal.windowElement.appendChild(subtitle);
+      messageSpan.append(subtitle);
     }
     const string = document.createElement("span");
 
     string.classList.add("terminal-default");
     string.style.color = this.terminal.errorColor;
     string.style.padding = "2px";
-    string.innerHTML = str;
-    this.terminal.windowElement.appendChild(string);
-    this.terminal.windowElement.appendChild(document.createElement("br"));
+    string.innerHTML = str + "<br>";
+    messageSpan.append(string);
+    this.screen.prepend(messageSpan);
   }
 
   writeInfo(str, infoTitle) {
+    let messageSpan;
+    messageSpan = document.createElement("span");
     if (this.terminal.displayTitle) {
+      messageSpan.style.width = "100%";
+      messageSpan.style.margin = "0px";
+      messageSpan.style.padding = "0px";
+
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
         subtitle.style.backgroundColor = this.terminal.infoColor;
@@ -72,20 +84,26 @@ export default class WindowOperator {
       let title = infoTitle ? infoTitle : "Information:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
-      this.terminal.windowElement.appendChild(subtitle);
+      messageSpan.append(subtitle);
     }
     const string = document.createElement("span");
 
     string.classList.add("terminal-default");
     string.style.color = this.terminal.infoColor;
     string.style.padding = "2px";
-    string.innerHTML = str;
-    this.terminal.windowElement.appendChild(string);
-    this.terminal.windowElement.appendChild(document.createElement("br"));
+    string.innerHTML = str + " <br>";
+    messageSpan.append(string);
+    this.terminal.windowElement.prepend(messageSpan);
   }
 
   writeSuccess(str, successTitle) {
+    let messageSpan;
+    messageSpan = document.createElement("div");
     if (this.terminal.displayTitle) {
+      messageSpan.style.width = "100%";
+      messageSpan.style.margin = "0px";
+      messageSpan.style.padding = "0px";
+
       const subtitle = document.createElement("span");
       if (this.terminal.invertedText) {
         subtitle.style.backgroundColor = this.terminal.successColor;
@@ -100,15 +118,15 @@ export default class WindowOperator {
       let title = successTitle ? successTitle : "Success:";
       subtitle.innerText = title;
       subtitle.style.marginRight = "5px";
-      this.terminal.windowElement.appendChild(subtitle);
+      messageSpan.append(subtitle);
     }
     const string = document.createElement("span");
 
     string.classList.add("terminal-default");
     string.style.color = this.terminal.successColor;
     string.style.padding = "2px";
-    string.innerHTML = str;
-    this.terminal.windowElement.appendChild(string);
-    this.terminal.windowElement.appendChild(document.createElement("br"));
+    string.innerHTML = str + " <br>";
+    messageSpan.append(string);
+    this.terminal.windowElement.prepend(messageSpan);
   }
 }
