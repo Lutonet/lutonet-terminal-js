@@ -1,4 +1,4 @@
-# terminal-js
+# lutonet-terminal-js
 
 **Hello guys**
 
