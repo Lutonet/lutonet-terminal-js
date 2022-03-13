@@ -1,7 +1,7 @@
 /* JSON class with functions to format text for terminal in JSON  */
 
 class Json {
-  constructor(props) {
+  constructor() {
     this.defaultColors = {
       text: "#6666ff",
       level0: "#aa4400",
@@ -12,20 +12,10 @@ class Json {
       level5: "#882244",
     };
     if (!props) props = {};
-    this.useColors = props.useColors ? useColors : true;
-    this.useOwnColors = props.useOwnColors ? useOwnColors : false;
-    if (this.useColors) {
-      if (this.useOwnColors) {
-        if (props.ownColors) {
-          this.actualColors = props.defaultColors;
-          for (let color in props.ownColors) {
-            if (this.defaultColors[color])
-              this.actualColors[color] = props.ownColors[color];
-          }
-        }
-        this.actualColors = this.defaultColors;
-      } else this.actualColors = this.defaultColors;
-    }
+    this.useColors = true;
+    this.useOwnColors = false;
+    this.ownColors = false;
+    this.actualColors = this.defaultColors;
     this.response = {
       success: true,
       data: "",
@@ -47,6 +37,7 @@ class Json {
   }
   set useColors(value) {
     this._useColors = value;
+    this.loadColorProfile();
   }
 
   get useOwnColors() {
@@ -54,6 +45,22 @@ class Json {
   }
   set useOwnColors(value) {
     this._useOwnColors = value;
+    this.loadColorProfile();
+  }
+
+  get ownColors() {
+    return this._ownColors;
+  }
+  set ownColors(value) {
+    this._ownColors(value);
+    this.loadColorProfile();
+  }
+
+  get spaces() {
+    return this._spaces;
+  }
+  set spaces(value) {
+    this._spaces = value;
   }
 
   loadColorProfile() {
@@ -74,7 +81,6 @@ class Json {
     jsonArray = jsonArray.map((line) => line.trim());
     let result = "";
     jsonArray.forEach((res) => (result += res));
-
     return result;
   }
 
@@ -141,9 +147,7 @@ class Json {
           break;
       }
     }
-    this.response.data = result;
-    console.log(this.response.data);
-    return this.response.data;
+    return result;
   }
 
   getSpaces = (level) => {
