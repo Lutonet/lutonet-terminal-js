@@ -3,10 +3,12 @@ import safeText from "./functions/safeText.js";
 import InputReader from "./InputReader.js";
 import WindowOperator from "./WindowOperator.js";
 import TerminalShell from "./TerminalShell.js";
+import Json from "./functions/Json.js";
 
 export class Terminal {
   /***********          constructor         ***********/
   constructor(props) {
+    this.json = new Json();
     // load all default settings
     this.canvas = "";
     this.windowElement = "";
@@ -243,6 +245,8 @@ export class Terminal {
     this.writeError = (string) => windowOperator.writeError(string);
     this.writeInfo = (string) => windowOperator.writeInfo(string);
     this.writeSuccess = (string) => windowOperator.writeSuccess(string);
+    this.writeHTML = (html) => windowOperator.writeHTML(html);
+    this.writeJSON = (json) => windowOperator.writeJSON(json);
     /**
      * If the element is AS 400 create two elements <div><div> second with 'terminal-input'
      * In case of terminal create single element with 'terminal-input' and 'terminal-window' classes

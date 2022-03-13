@@ -15,3 +15,28 @@ Terminal supports two different modes
 - **as-400** terminal is divided to bottom command line and the display above it.
 
 As an as-400 terminal it allows to read user input and get its value to use for triggering different functions
+
+## terminal supports following functions:
+
+** Display informations **
+
+- display string
+- display line
+- display **successfull** message
+- display **informational** message
+- display **successfull** message
+- display **html formated code**
+- display **JSON** formated source code **with coloured brackets** _[colors are optional]_
+
+For all details is possible to define own colors and styles
+
+** Read informations **
+
+- read line and call the callback function passing it this character
+- read single character and call the callback function passing it this character
+- read single character from selected range - call callback when one of characters in range is pressed
+
+** Shell **
+
+- command prompt like shell allowing basic function (display test, clear console, display help)
+- import one or more of shellObjects which can work like middleware and add different functionalities to the terminal.

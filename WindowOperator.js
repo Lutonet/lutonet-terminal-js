@@ -12,6 +12,7 @@ export default class WindowOperator {
     this.screen.innerHTML = "";
   }
   write(str) {
+    if (!str) str = "";
     const string = document.createElement("span");
     string.classList.add("terminal-default");
     string.style.padding = "2px";
@@ -20,6 +21,7 @@ export default class WindowOperator {
     this.screen.prepend(string);
   }
   writeLine(str) {
+    if (!str) str = "";
     const string = document.createElement("div");
     string.classList.add("terminal-default");
     string.style.padding = "2px";
@@ -29,6 +31,7 @@ export default class WindowOperator {
   }
 
   writeError(str, errorTitle) {
+    if (!str) str = "";
     let messageSpan;
     messageSpan = document.createElement("div");
     if (this.terminal.displayTitle) {
@@ -63,6 +66,7 @@ export default class WindowOperator {
   }
 
   writeInfo(str, infoTitle) {
+    if (!str) str = "";
     let messageSpan;
     messageSpan = document.createElement("span");
     if (this.terminal.displayTitle) {
@@ -97,6 +101,7 @@ export default class WindowOperator {
   }
 
   writeSuccess(str, successTitle) {
+    if (!str) str = "";
     let messageSpan;
     messageSpan = document.createElement("div");
     if (this.terminal.displayTitle) {
@@ -128,5 +133,21 @@ export default class WindowOperator {
     string.innerHTML = str + " <br>";
     messageSpan.append(string);
     this.terminal.windowElement.prepend(messageSpan);
+  }
+
+  writeHTML(html) {
+    const newElement = document.createElement("div");
+    newElement.style.display = "block";
+    newElement.style.maxWidth = "100%";
+    newElement.style.margin = "5px";
+    newElement.innerHTML = html;
+    this.terminal.windowElement.prepend(newElement);
+  }
+  writeJSON(json) {
+    console.log("called");
+    this.writeHTML(this.terminal.json.getHtml(json));
+  }
+  catch(error) {
+    this.writeError(error);
   }
 }

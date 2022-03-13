@@ -59,6 +59,10 @@ Decides if the terminal will display Title word inverted (for example Error woul
 
 `writeSuccess(string, title)` like `writeLine(string)` styled as success - can diplay a `title` before message
 
+`writeHTML(html)` renders HTML code in the console - css most likely not applied
+
+`writeJSON(json)` renders JSON beautified a bit if possible on the console
+
 `read(question, keys)` _promise_ returns char when user presses any key on the command line. String with `question` will be displayed on the command line before the terminal symbol. Parameter `keys` can specify valid keys - other pressed keys will be ignored.
 example: `terminal.read('Do you agree?',['y','n'])`
 

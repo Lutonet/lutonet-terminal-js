@@ -1,5 +1,6 @@
 export default class TerminalShell {
   constructor(terminal, shells) {
+    this.shells = shells;
     this.activateNext = false;
     this.terminal = terminal;
     if (!terminal.windowElement) {
@@ -12,14 +13,13 @@ export default class TerminalShell {
     let data = command.split(" ");
     if (data.length === 0) {
       console.log("empty command");
-      return;
       data = data.map((arg) => arg.trim());
     }
     let blockDefault = false;
-    if (shells) {
-      shells.forEach((shell) => {
+    if (this.shells) {
+      this.shells.forEach((shell) => {
         if (shell.blockDefault) blockDefault = true;
-        execute({});
+        shell.execute(command);
       });
     }
     if (!blockDefault) {
@@ -29,6 +29,39 @@ export default class TerminalShell {
 
         case "clear":
           this.terminal.clear();
+          break;
+
+        case "test":
+          this.terminal.clear();
+          this.terminal.writeLine("Actuall date: " + new Date());
+          this.terminal.readLine("Enter testing data").then((data) => {
+            this.terminal.writeSuccess("Data Entered: " + data);
+            this.terminal.writeLine();
+            this.terminal.readKey("Press any key").then((data) => {
+              this.terminal.writeInfo("Pressed key " + data);
+              this.terminal.writeLine();
+              this.terminal
+                .readKey("Are you sure?[y/n]", ["y", "n"])
+                .then((data) =>
+                  data == "y" || data == "Y"
+                    ? this.terminal.writeSuccess("Confirmed")
+                    : this.terminal.writeError("Declined")
+                )
+                .then(() => {
+                  let htmlTest = `<table style="align: center; background-color: '#444488'; border: '1px solid'">
+                                    <tr>
+                                      <th colspan='2' style='align: center;'> This is HTML table
+                                      </th>
+                                    <tr>
+                                      <td style = "align: center, color: '#888888'"> column 1</td>
+                                      <td style = "align: center, color: '#888822'"> column 2</td>
+                                    <tr>
+                                  </table>`;
+                  this.terminal.writeLine();
+                  this.terminal.writeHTML(htmlTest);
+                });
+            });
+          });
           break;
 
         case "help":
