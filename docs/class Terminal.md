@@ -1,4 +1,15 @@
-# Basic JS Terminal properties and methods
+# Class Terminal
+
+This is a **main class** of the project which only needs to be included when using this class library.
+
+Included classess are:
+
+- [WindowOperator](./WindowOperator.md)
+- [InputOperator](./InputOperator.md)
+- [TerminalShell](./TerminalShell.md)
+- [Json]('./class Json.md')
+
+## Basic JS Terminal properties and methods
 
 ### Properties:
 
