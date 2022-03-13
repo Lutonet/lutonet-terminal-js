@@ -4,10 +4,12 @@ This is a **main class** of the project which only needs to be included when usi
 
 Included classess are:
 
-- [WindowOperator](./WindowOperator.md)
-- [InputOperator](./InputOperator.md)
-- [TerminalShell](./TerminalShell.md)
-- [Json](./Json.md)
+> - [WindowOperator](./WindowOperator.md)
+> - [InputOperator](./InputOperator.md)
+> - [TerminalShell](./TerminalShell.md)
+> - [Json](./Json.md)
+
+**don't include those classes directly. You can access them in your terminal instance as its properties (IE `terminal.json`)**
 
 ## Basic JS Terminal properties and methods
 
