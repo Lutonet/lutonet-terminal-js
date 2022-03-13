@@ -1,11 +1,11 @@
 export default class WindowOperator {
   constructor(terminal) {
     this.terminal = terminal;
-    if (!terminal.windowElement) {
+    if (!terminal.screen) {
       console.log("no window element to display at");
       return;
     }
-    this.screen = terminal.windowElement;
+    this.screen = terminal.screen;
   }
   // here we define basic terminal services
   clear() {
@@ -20,6 +20,7 @@ export default class WindowOperator {
     string.innerHTML = str;
     this.screen.prepend(string);
   }
+
   writeLine(str) {
     if (!str) str = "";
     const string = document.createElement("div");
@@ -97,7 +98,7 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.innerHTML = str + " <br>";
     messageSpan.append(string);
-    this.terminal.windowElement.prepend(messageSpan);
+    this.terminal.windowOperator.prepend(messageSpan);
   }
 
   writeSuccess(str, successTitle) {
@@ -132,7 +133,7 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.innerHTML = str + " <br>";
     messageSpan.append(string);
-    this.terminal.windowElement.prepend(messageSpan);
+    this.terminal.windowOperator.prepend(messageSpan);
   }
 
   writeHTML(html) {
@@ -141,13 +142,10 @@ export default class WindowOperator {
     newElement.style.maxWidth = "100%";
     newElement.style.margin = "5px";
     newElement.innerHTML = html;
-    this.terminal.windowElement.prepend(newElement);
+    this.terminal.windowOperator.prepend(newElement);
   }
   writeJSON(json) {
     console.log("called");
     this.writeHTML(this.terminal.json.getHtml(json));
-  }
-  catch(error) {
-    this.writeError(error);
   }
 }

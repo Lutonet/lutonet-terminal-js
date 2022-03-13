@@ -11,7 +11,7 @@ export class Terminal {
     this.json = new Json();
     // load all default settings
     this.canvas = "";
-    this.windowElement = "";
+    this.windowOperator = "";
     this.isLoaded = false;
     this.settings = defaultSettings();
     for (let setting in this.settings.defaultSettings) {
@@ -78,16 +78,6 @@ export class Terminal {
       this[setting] = this.settings[value][setting];
     }
 
-    if (this.isLoaded) {
-      this.reload();
-    }
-  }
-
-  get cursor() {
-    return this._cursor;
-  }
-  set cursor(value) {
-    this._cursor = value;
     if (this.isLoaded) {
       this.reload();
     }
@@ -232,7 +222,7 @@ export class Terminal {
     terminalWindow.style.fontSize = "14px";
     terminalWindow.style.minHeight = "250px";
     this.canvas.appendChild(terminalWindow);
-    this.windowElement = terminalWindow;
+    this.screen = terminalWindow;
     // we got terminal running, now we need to attach the TerminalOperator to it
     const windowOperator = new WindowOperator(this);
     this.clear = () => {
@@ -297,10 +287,12 @@ export class Terminal {
     }
   };
   // unload the element
+
   stop = () => {
     this.canvas.innerHTML = "";
     this.isLoaded = false;
   };
+
   // reload elements
   reload = () => {
     this.stop();
