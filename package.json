@@ -1,6 +1,6 @@
 {
   "name": "lutonet-terminal-js",
-  "version": "1.0.4-beta",
+  "version": "1.0.5-beta",
   "description": "Terminal UI which can display data for users, admin and can be also used to trigger different functions and command. I plan to add real-time support for SignalR and Socket IO or API support for server calls",
   "main": "Terminal.js",
   "scripts": {},
