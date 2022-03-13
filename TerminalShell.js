@@ -3,7 +3,7 @@ export default class TerminalShell {
     this.shells = shells;
     this.activateNext = false;
     this.terminal = terminal;
-    if (!terminal.windowOperator) {
+    if (!terminal) {
       console.log("no terminal element was received in the constructor");
       return;
     }

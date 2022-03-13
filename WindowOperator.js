@@ -98,7 +98,7 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.innerHTML = str + " <br>";
     messageSpan.append(string);
-    this.terminal.windowOperator.prepend(messageSpan);
+    this.terminal.screen.prepend(messageSpan);
   }
 
   writeSuccess(str, successTitle) {
@@ -133,7 +133,7 @@ export default class WindowOperator {
     string.style.padding = "2px";
     string.innerHTML = str + " <br>";
     messageSpan.append(string);
-    this.terminal.windowOperator.prepend(messageSpan);
+    this.terminal.screen.prepend(messageSpan);
   }
 
   writeHTML(html) {
@@ -142,7 +142,7 @@ export default class WindowOperator {
     newElement.style.maxWidth = "100%";
     newElement.style.margin = "5px";
     newElement.innerHTML = html;
-    this.terminal.windowOperator.prepend(newElement);
+    this.terminal.screen.prepend(newElement);
   }
   writeJSON(json) {
     console.log("called");

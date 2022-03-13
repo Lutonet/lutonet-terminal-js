@@ -11,7 +11,6 @@ class Json {
       level4: "#884488",
       level5: "#882244",
     };
-    if (!props) props = {};
     this.useColors = true;
     this.useOwnColors = false;
     this.ownColors = false;
@@ -52,7 +51,7 @@ class Json {
     return this._ownColors;
   }
   set ownColors(value) {
-    this._ownColors(value);
+    this._ownColors = value;
     this.loadColorProfile();
   }
 
