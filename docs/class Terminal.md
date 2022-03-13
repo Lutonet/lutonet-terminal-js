@@ -7,7 +7,7 @@ Included classess are:
 - [WindowOperator](./WindowOperator.md)
 - [InputOperator](./InputOperator.md)
 - [TerminalShell](./TerminalShell.md)
-- [Json]('./class Json.md')
+- [Json](./Json.md)
 
 ## Basic JS Terminal properties and methods
 
