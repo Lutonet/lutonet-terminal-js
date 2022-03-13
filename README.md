@@ -40,3 +40,10 @@ For all details is possible to define own colors and styles
 
 - command prompt like shell allowing basic function (display test, clear console, display help)
 - import one or more of shellObjects which can work like middleware and add different functionalities to the terminal.
+
+##Some little preview
+
+![terminal.writeLine](./images/1.png)
+![terminal.read](./images/2.png)
+![terminal.readKey](./images/3.png)
+![terminal.writeJSON](./images/4.png)

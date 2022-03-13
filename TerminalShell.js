@@ -59,6 +59,11 @@ export default class TerminalShell {
                                   </table>`;
                   this.terminal.writeLine();
                   this.terminal.writeHTML(htmlTest);
+                  let json = `{"id":3,"user":{"name":"Bites","surName":"Gills"},"cars":["Audi","BMW"]}`;
+                  this.terminal.json.useOwnColors = true;
+                  this.terminal.json.ownColors = { text: "#777788" };
+                  this.terminal.writeJSON(json);
+                  this.terminal.json.useOwnColors = false;
                 });
             });
           });

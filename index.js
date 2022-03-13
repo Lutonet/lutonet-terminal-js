@@ -4,7 +4,3 @@ const terminal = new Terminal({ terminalType: "as-400" });
 terminal.theme = "dark";
 terminal.start();
 terminal.displayTitle = true;
-let json = `{"id":3,"user":{"name":"Bites","surName":"Gills"},"cars":["Audi","BMW"]}`;
-terminal.json.useOwnColors = true;
-terminal.json.ownColors = { text: "#777788" };
-terminal.writeJSON(json);
