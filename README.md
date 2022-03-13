@@ -18,7 +18,7 @@ As an as-400 terminal it allows to read user input and get its value to use for 
 
 ## terminal supports following functions:
 
-** Display informations **
+**Display informations**
 
 - display string
 - display line
@@ -30,13 +30,13 @@ As an as-400 terminal it allows to read user input and get its value to use for 
 
 For all details is possible to define own colors and styles
 
-** Read informations **
+**Read informations**
 
 - read line and call the callback function passing it this character
 - read single character and call the callback function passing it this character
 - read single character from selected range - call callback when one of characters in range is pressed
 
-** Shell **
+**Shell**
 
 - command prompt like shell allowing basic function (display test, clear console, display help)
 - import one or more of shellObjects which can work like middleware and add different functionalities to the terminal.
