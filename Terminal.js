@@ -220,7 +220,7 @@ export class Terminal {
     terminalWindow.style.padding = "5px";
     terminalWindow.style.width = "100%";
     terminalWindow.style.fontSize = "14px";
-    terminalWindow.style.minHeight = "250px";
+    terminalWindow.style.minHeight = "350px";
     this.canvas.appendChild(terminalWindow);
     this.screen = terminalWindow;
     // we got terminal running, now we need to attach the TerminalOperator to it
@@ -245,9 +245,10 @@ export class Terminal {
     if (this.terminalType !== "logger") {
       if (this.terminalType === "as-400") {
         this.inputSpan = document.createElement("span");
-        this.inputSpan.style.margin = "0px";
-        this.inputSpan.style.marginRight = "-10px";
+
         this.inputSpan.style.display = "flex";
+        this.inputSpan.classList.add("terminal-command");
+
         this.inputSpan.style.backgroundColor = this.backgroundColor;
         this.prompt = document.createElement("span");
         this.prompt.style.height = "20px";

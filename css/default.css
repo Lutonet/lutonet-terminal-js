@@ -9,7 +9,9 @@ body {
   font-family: 'Share Tech Mono', monospace;
   width: '550';
 }
-
+.terminal-command {
+  margin-right: -10px
+}
 
 .terminal-window {
   font-family: 'Share Tech Mono', monospace;

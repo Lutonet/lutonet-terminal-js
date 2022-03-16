@@ -37,7 +37,7 @@ export default class WindowOperator {
     messageSpan = document.createElement("div");
     if (this.terminal.displayTitle) {
       messageSpan.style.width = "100%";
-      messageSpan.style.margin = "0px";
+      messageSpan.style.marginRight = "0px";
       messageSpan.style.padding = "0px";
 
       const subtitle = document.createElement("span");
