@@ -24,7 +24,7 @@ As an as-400 terminal it allows to read user input and get its value to use for 
 - display line
 - display **successfull** message
 - display **informational** message
-- display **successfull** message
+- display **error** message
 - display **html formated code**
 - display **JSON** formated source code **with coloured brackets** _[colors are optional]_
 
